@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise #5: Input check</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        .err {
+            color: red;
+            font-size: 0.7em;
+        }
+    </style>
+    <script>
+        /* TODO complete this part */
+    </script>
+</head>
+<body>
+
+<form name="pw">
+    <table>
+        <tr>
+            <td>Password (min 6 characters):</td>
+            <td><input type="password" name="password1" id="password1" size="10" placeholder="Password"  oninput="TooShort()" autofocus></td>
+            <td>
+                <div id="pw1_check" class="err"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Repeat password:</td>
+            <td><input type="password" name="password2" id="password2" size="10" placeholder="Password" oninput="DontMatch(this)"></td>
+            <td>
+                <div id="pw2_check" class="err"></div>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit" id="submitBtn"/>
+</form>
+<script>
+
+    window.onload = function (){
+        document.getElementById("submitBtn").style.display="none";
+    }
+
+    function TooShort()
+    {
+        var x = document.getElementById("password1");
+        if(x.value.length<6)
+        document.getElementById("pw1_check").innerHTML="Too Short";
+        else
+        document.getElementById("pw1_check").innerHTML="";
+    }
+
+    function DontMatch(y)
+    {
+        var x = document.getElementById("password1");
+        if(x.value==y.value)
+        {
+            Showbox();
+            document.getElementById("pw2_check").innerHTML="";
+        }
+        else
+        document.getElementById("pw2_check").innerHTML="the two passwords don't match";
+    }
+
+    function Showbox()
+    {
+        document.getElementById("submitBtn").style.display="block";
+    }
+
+</script>
+</body>
+</html>
+
